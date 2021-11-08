@@ -29,9 +29,23 @@ class InvalidConfig extends ErrorWithCode {
     }
 }
 
+class FileNotExist extends ErrorWithCode {
+    constructor(file = '') {
+        super(8, `"${file}" файл не обнаружен`)
+    }
+}
+
+class PermitionsError extends ErrorWithCode {
+    constructor(file = '') {
+        super(9, `Нет прав на доступ к файлу или "${file}" не является файлом`)
+    }
+}
+
 module.exports = {
     InvalidOption,
     OptionDuplication,
     MissingConfigOption,
-    InvalidConfig
+    InvalidConfig,
+    FileNotExist,
+    PermitionsError
 }
