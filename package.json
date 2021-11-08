@@ -1,0 +1,24 @@
+{
+  "name": "rs-school-nodejs",
+  "version": "0.1.0",
+  "description": "",
+  "engines": {
+    "node": "^16.0.0"
+  },
+  "bin": {
+    "my_ciphering_cli": "./my_ciphering_cli/index.js"
+  },
+  "scripts": {
+    "test": "node my_ciphering_cli -c \"C1-C0-A-R1-R0-A-R0-R0-C1-A\" -i \"./input.txt\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Titiaiev/rs-school-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Titiaiev/rs-school-nodejs/issues"
+  },
+  "homepage": "https://github.com/Titiaiev/rs-school-nodejs#readme"
+}
