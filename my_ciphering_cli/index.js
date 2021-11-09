@@ -24,7 +24,11 @@ function main (args = []) {
       .createPiplineFromCofig(settings.config)
       .run(settings.input, settings.output)
   } catch (err) {
-    process.stderr.write(`ERROR: ${err.message}\nexitCode: ${err.code}\n`)
-    process.exit(err.code || 1)
+    if (err.isCustom) {
+      process.stderr.write(`${err.name}: ${err.message}\nexitCode: ${err.code}\n`)
+      process.exit(err.code || 1)
+    } else {
+      throw err
+    }
   }
 }
