@@ -1,7 +1,7 @@
 # rs-school-nodejs
 
 ## Запуск
-Находясь в директории `rs-school-nodejs`, нужно в терминале выполнить команду `node my_caesar_cli --config "C1-C1-R0-A" -i "./input.txt" -o "./output.txt"`
+Находясь в директории `rs-school-nodejs`, нужно в терминале выполнить команду `node my_ciphering_cli --config "C1-C1-R0-A" -i "./input.txt" -o "./output.txt"`
 Для работы приложения у вас должен быть установлен nodejs
 
 ## Настройки
