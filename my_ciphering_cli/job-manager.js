@@ -1,6 +1,9 @@
 const { Transform, pipeline } = require('stream')
+const util = require('util')
+
 const { Atbash, Caesar, ROT8 } = require('./ciphers.js')
 const { isEnglishCharCode } = require('./helpers.js')
+const asyncPipeline = util.promisify(pipeline)
 
 class Job extends Transform {
   constructor (alg, opts) {
@@ -23,8 +26,12 @@ class Job extends Transform {
       return processedLetter + delta
     }
 
-    chunk = chunk.map((char) => processAlgForLetter(char, this.alg))
-    cb(null, chunk)
+    try {
+      chunk = chunk.map((char) => processAlgForLetter(char, this.alg))
+      cb(null, chunk)
+    } catch (error) {
+      cb(error)
+    }
   }
 }
 
@@ -53,8 +60,8 @@ class JobManager {
      * @param {NodeJS.ReadStream} input
      * @param {NodeJS.WriteStream} output
      */
-  run (input, output) {
-    pipeline(input, ...this.jobs, output, (err) => { })
+  async run (input, output) {
+    await asyncPipeline(input, ...this.jobs, output)
     return this
   }
 }

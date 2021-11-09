@@ -5,7 +5,7 @@ const { JobManager } = require('./job-manager.js')
 
 main(process.argv.slice(2))
 
-function main (args = []) {
+async function main (args = []) {
   try {
     const { configString, inputFile, outputFile } = parseArgs(args)
 
@@ -20,7 +20,7 @@ function main (args = []) {
       output: outputFile ? tryCreateWriteStreamForPath(outputFile) : process.stdout
     }
 
-    new JobManager()
+    await new JobManager()
       .createPiplineFromCofig(settings.config)
       .run(settings.input, settings.output)
   } catch (err) {
