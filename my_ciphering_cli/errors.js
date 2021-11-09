@@ -3,6 +3,7 @@ class ErrorWithCode extends Error {
     super(message)
     this.code = code
     this.name = this.constructor.name
+    this.isCustom = true
   }
 }
 
