@@ -103,7 +103,4 @@ dist
 # TernJS port file
 .tern-port
 
-
-input.txt
-output.txt
 trash
